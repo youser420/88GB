@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="Crypto Market Pulse - real-time cryptocurrency market dashboard."
+    />
+    <meta name="color-scheme" content="light dark" />
+    <meta
+      name="theme-color"
+      content="#ffffff"
+      media="(prefers-color-scheme: light)"
+    />
+    <meta
+      name="theme-color"
+      content="#020617"
+      media="(prefers-color-scheme: dark)"
+    />
+    <title>Crypto Market Pulse</title>
+    <script>
+      // Apply the persisted/system theme before paint to avoid a flash.
+      try {
+        var raw = localStorage.getItem('cmp:theme');
+        var theme = raw ? JSON.parse(raw).state.theme : 'system';
+        var dark =
+          theme === 'dark' ||
+          (theme === 'system' &&
+            window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (dark) document.documentElement.classList.add('dark');
+      } catch (e) {
+        /* no-op */
+      }
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
